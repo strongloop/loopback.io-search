@@ -16,13 +16,12 @@ Function code. Currently deployed to a Node 8 runtime.
 
 ## Contributions
 
-* [Guidelines](https://github.com/strongloop/loopback-next/blob/master/docs/CONTRIBUTING.md)
+* [Guidelines](./CONTRIBUTING.md)
 * [Join the team](https://github.com/strongloop/loopback-next/issues/110)
 
 ## Contributors
 
-See
-[all contributors](https://github.com/strongloop/loopback.io-search/graphs/contributors).
+See [all contributors](https://github.com/strongloop/loopback.io-search/graphs/contributors).
 
 ## License
 
