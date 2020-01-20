@@ -18,10 +18,13 @@ function main(params) {
   }
 
   // Initialize Watson Discovery
+  // From the Watson Discovery service on IBM Cloud, 
+  // `iam_apikey`: `apikey` in the service credential
+  // `url`: `url` in the service credential
   const discovery = new DiscoveryV1({
-    version: '2018-03-05',
-    username: params.discovery_username,
-    password: params.discovery_password
+    version: "2018-12-03",
+    iam_apikey: params.discovery_apikey,
+    url: params.discovery_url
   });
 
   return new Promise(function(resolve, reject) {
@@ -75,35 +78,11 @@ function main(params) {
           collection_id: collectionID,
           natural_language_query: params.q,
           highlight: true,
-          return_fields: ['metadata']
         };
-
-        // Filter based on sidebar metadata if present.
-        // Include Contribute and Community Sidebars as default as well
-        // as the English version of docs (if a different language sidebar) is set.
-        if (params.sidebar) {
-          const sidebars = ['contrib_sidebar', 'community_sidebar'];
-          if (params.sidebar.split('_').length > 2) {
-            sidebars.push(
-              params.sidebar
-                .split('_')
-                .splice(1)
-                .join('_')
-            );
-          }
-          sidebars.push(params.sidebar);
-
-          let filter;
-          sidebars.map(x => {
-            x = `metadata.sidebar:"${x}"`;
-          });
-          filter = `(${sidebars.join('|')})`;
-          data.filter = filter;
-        }
 
         // Query offset
         if (params.offset) {
-          data.offset = params.offset;
+         data.offset = params.offset;
         }
 
         // Make the query to Watson Discovery -- Return results to user.
