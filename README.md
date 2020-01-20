@@ -12,7 +12,22 @@ filter metadata if `sidebar` value is present in the call.
 ## Deployment
 
 Any changes made to this repository will need to be reflect in IBM Cloud by updating the
-Function code. Currently deployed to a Node 8 runtime.
+Function code. Currently deployed to a Node 10 runtime.
+
+Make sure you have Watson Discovery service created on IBM Cloud. 
+
+1. Create a Cloud function in https://cloud.ibm.com/functions/
+2. Go to Parameters tab, set the following parameters:
+
+| Parameter Name    | Parameter Value |
+| ----------------- |:-------------:| 
+| discovery_url     | `url` in Watson Discovery service credentials    | 
+| discovery_apikey  | `apikey` in Watson Discovery service credentials |   
+  
+3. Go to Code tab, copy content in `search.js` in the text area.
+4. Go to Endpoints tab, Make sure the checkbox "Enable as Web Action" is checked. In this case, you'll have a public API.
+
+The Cloud function is set up and ready to run.
 
 ## Contributions
 
